@@ -9,8 +9,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(ChangeNotifierProvider(
-      create: (context) => settings_provider(), child: const islami_app()));
+      create: (context) => settings_provider()..initialize(),
+      child: const islami_app()));
 }
 
 class islami_app extends StatelessWidget {
@@ -31,7 +33,7 @@ class islami_app extends StatelessWidget {
         Locale('ar'),
         Locale('en'),
       ],
-      locale: provider.language,
+      locale: Locale(provider.language),
       themeMode: provider.themMode,
       theme: appTheme.light_theme,
       darkTheme: appTheme.dark_theme,

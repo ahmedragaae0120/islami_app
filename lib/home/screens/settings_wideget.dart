@@ -40,7 +40,7 @@ class _settings_widgetState extends State<settings_widget> {
                 color: Theme.of(context).colorScheme.primary,
               ),
               child: Text(
-                provider.language == Locale("ar") ? "العربية" : "English",
+                provider.language == "ar" ? "العربية" : "English",
                 style: TextStyle(
                   fontSize: 24,
                   color:
