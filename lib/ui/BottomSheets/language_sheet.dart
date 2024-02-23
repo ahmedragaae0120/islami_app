@@ -19,17 +19,15 @@ class _language_sheetState extends State<language_sheet> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           getSelectedLanguage(
-              provider.language == Locale("ar") ? "العربية" : "English"),
+              provider.language == "ar" ? "العربية" : "English"),
           SizedBox(height: 20),
           InkWell(
             onTap: () {
               Navigator.pop(context);
-              provider.changeLanguage(provider.language == Locale("en")
-                  ? Locale("ar")
-                  : Locale("en"));
+              provider.changeLanguage(provider.language == "en" ? "ar" : "en");
             },
             child: getUnSelectedLanguage(
-                provider.language == Locale("ar") ? "English" : "العربية"),
+                provider.language == "ar" ? "English" : "العربية"),
           ),
         ],
       ),
