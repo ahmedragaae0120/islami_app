@@ -34,7 +34,7 @@ class _SebhaWidgetState extends State<SebhaWidget> {
               alignment: Alignment.topCenter,
               children: [
                 Container(
-                  padding: EdgeInsets.only(top: 5),
+                  padding: const EdgeInsets.only(top: 5),
                   child: Image.asset(
                     "assets/image/head_of_seb7a.png",
                     fit: BoxFit.fill,
@@ -43,26 +43,26 @@ class _SebhaWidgetState extends State<SebhaWidget> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(60),
-                  child: RotatedBox(
-                    quarterTurns: rotate,
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {
-                          if (rotate == 33) {
-                            if (index_tsbeha == tsabeh.length - 1) {
-                              index_tsbeha = 0;
-                            } else {
-                              index_tsbeha++;
-                            }
-                            rotate = 0;
+                  padding: const EdgeInsets.all(60),
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        if (rotate == 33) {
+                          if (index_tsbeha == tsabeh.length - 1) {
+                            index_tsbeha = 0;
+                          } else {
+                            index_tsbeha++;
                           }
-                          rotate++;
-                          log("${index_tsbeha} and rotate $rotate");
-                        });
-                      },
-                      highlightColor: Colors.transparent,
-                      splashColor: Colors.transparent,
+                          rotate = 0;
+                        }
+                        rotate++;
+                        log("$index_tsbeha and rotate $rotate");
+                      });
+                    },
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    child: Transform.rotate(
+                      angle: rotate.toDouble(),
                       child: Image.asset(
                         "assets/image/body_of_seb7a.png",
                         color: Theme.of(context).colorScheme.onTertiary,
@@ -77,8 +77,8 @@ class _SebhaWidgetState extends State<SebhaWidget> {
               style: TextStyle(
                   fontSize: 25, color: Theme.of(context).colorScheme.tertiary)),
           Container(
-            margin: EdgeInsets.all(10),
-            padding: EdgeInsets.all(4),
+            margin: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Theme.of(context).colorScheme.primary.withOpacity(0.80)),
@@ -94,7 +94,7 @@ class _SebhaWidgetState extends State<SebhaWidget> {
                 borderRadius: BorderRadius.circular(15),
                 color: Theme.of(context).colorScheme.onTertiary),
             child: Text(
-              "${tsabeh[index_tsbeha]}",
+              tsabeh[index_tsbeha],
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
@@ -102,7 +102,7 @@ class _SebhaWidgetState extends State<SebhaWidget> {
               ),
             ),
           ),
-          SizedBox(height: 100)
+          const SizedBox(height: 100)
         ],
       ),
     );
