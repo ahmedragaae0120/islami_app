@@ -1,18 +1,30 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:islami_app/home/screens/home_screen.dart';
-import 'package:islami_app/provider/settings_provider.dart';
+import 'package:islami_app/api/api_manager.dart';
+import 'package:islami_app/bloc_observer.dart';
+import 'package:islami_app/ui/screens/home/home_screen.dart';
+import 'package:islami_app/ui/screens/home/tabs/radio_tab/provider/radio_provider.dart';
+import 'package:islami_app/ui/provider/settings_provider.dart';
 import 'package:islami_app/style/app_theme.dart';
-import 'package:islami_app/ui/ahadeth_datails/hadeth_details_screen.dart';
-import 'package:islami_app/ui/quran_datails.dart/suras_screen.dart';
+import 'package:islami_app/ui/screens/home/tabs/ahadeth_tab/ahadeth_datails/hadeth_details_screen.dart';
+import 'package:islami_app/ui/screens/home/tabs/quran_tab/quran_datails.dart/suras_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami_app/ui/screens/splach/splach_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  ApiManager.init();
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(ChangeNotifierProvider(
+  Bloc.observer = MyBlocObserver();
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(
       create: (context) => settings_provider()..initialize(),
-      child: const islami_app()));
+    ),
+    ChangeNotifierProvider(
+      create: (context) => RadioProvider(),
+    )
+  ], child: const islami_app()));
 }
 
 class islami_app extends StatelessWidget {
@@ -38,12 +50,13 @@ class islami_app extends StatelessWidget {
       theme: appTheme.light_theme,
       darkTheme: appTheme.dark_theme,
       routes: {
-        home_screen.route_name: (context) => home_screen(),
-        suras_screen.route_name: (context) => const suras_screen(),
+        home_screen.route_name: (context) => const home_screen(),
+        SurasScreen.route_name: (context) => const SurasScreen(),
         hadeth_details_screen.route_name: (context) =>
             const hadeth_details_screen(),
+        SplachScreen.route_name: (context) => const SplachScreen(),
       },
-      initialRoute: home_screen.route_name,
+      initialRoute: SplachScreen.route_name,
     );
   }
 }

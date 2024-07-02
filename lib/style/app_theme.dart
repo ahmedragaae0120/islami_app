@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 class appTheme {
   static bool isDark = false;
-  static Color dark_primary = Color(0xff141A2E);
-  static Color dark_secondary = Color(0xffFACC1D);
-  static Color light_primary = Color(0xffB7935F);
+  static Color dark_primary = const Color(0xff141A2E);
+  static Color dark_secondary = const Color(0xffFACC1D);
+  static Color light_primary = const Color(0xffB7935F);
   static ThemeData light_theme = ThemeData(
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       color: Colors.transparent,
       centerTitle: true,
       titleTextStyle: TextStyle(
           fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),
     ),
     scaffoldBackgroundColor: Colors.transparent,
-    cardTheme: CardTheme(color: Colors.white),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    cardTheme: const CardTheme(color: Colors.white),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       selectedIconTheme: IconThemeData(size: 30, color: Colors.black),
       unselectedIconTheme: IconThemeData(size: 20),
       selectedItemColor: Colors.black,
@@ -23,13 +23,13 @@ class appTheme {
       seedColor: light_primary,
       primary: light_primary,
       onPrimary: Colors.white,
-      secondary: Color(0xffB7935F).withOpacity(0.57),
+      secondary: const Color(0xffB7935F).withOpacity(0.57),
       onSecondary: Colors.black, //text is suares and ahadeth
       tertiary: Colors.black, //text is suares_widegt and ahadeth_widget
       onTertiary: light_primary, //sebha
     ),
     textTheme: TextTheme(
-      bodyLarge: TextStyle(
+      bodyLarge: const TextStyle(
           color: Colors.black,
           fontSize: 25,
           fontWeight: FontWeight.bold), //unselected
@@ -39,12 +39,12 @@ class appTheme {
           fontWeight: FontWeight.bold), //selected
     ),
     cardColor: Colors.white,
-    bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.white),
+    bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Colors.white),
     useMaterial3: true,
   );
 
   static ThemeData dark_theme = ThemeData(
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       color: Colors.transparent,
       centerTitle: true,
       titleTextStyle: TextStyle(
@@ -53,8 +53,9 @@ class appTheme {
     scaffoldBackgroundColor: Colors.transparent,
     cardTheme: CardTheme(color: dark_primary),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      selectedIconTheme: IconThemeData(size: 28, color: Color(0xffFACC1D)),
-      unselectedIconTheme: IconThemeData(size: 20),
+      selectedIconTheme:
+          const IconThemeData(size: 28, color: Color(0xffFACC1D)),
+      unselectedIconTheme: const IconThemeData(size: 20),
       selectedItemColor: dark_secondary,
     ),
     colorScheme: ColorScheme.fromSeed(
@@ -67,7 +68,7 @@ class appTheme {
       onTertiary: dark_secondary,
     ),
     textTheme: TextTheme(
-      bodyLarge: TextStyle(
+      bodyLarge: const TextStyle(
           color: Colors.white,
           fontSize: 25,
           fontWeight: FontWeight.bold), //unselected
