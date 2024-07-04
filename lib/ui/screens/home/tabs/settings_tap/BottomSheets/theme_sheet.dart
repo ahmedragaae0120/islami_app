@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/provider/settings_provider.dart';
+import 'package:islami_app/ui/provider/settings_provider.dart';
 import 'package:provider/provider.dart';
 
 class theme_sheet extends StatefulWidget {

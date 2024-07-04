@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/provider/settings_provider.dart';
-import 'package:islami_app/ui/BottomSheets/language_sheet.dart';
-import 'package:islami_app/ui/BottomSheets/theme_sheet.dart';
+import 'package:islami_app/ui/provider/settings_provider.dart';
+import 'package:islami_app/ui/screens/home/tabs/settings_tap/BottomSheets/language_sheet.dart';
+import 'package:islami_app/ui/screens/home/tabs/settings_tap/BottomSheets/theme_sheet.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 

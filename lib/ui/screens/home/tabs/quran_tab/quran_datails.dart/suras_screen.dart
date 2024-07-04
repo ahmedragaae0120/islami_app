@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami_app/provider/settings_provider.dart';
+import 'package:islami_app/ui/provider/settings_provider.dart';
 import 'package:islami_app/style/app_theme.dart';
-import 'package:islami_app/ui/quran_datails.dart/quran_title_widget.dart';
+import 'package:islami_app/ui/screens/home/tabs/quran_tab/quran_datails.dart/quran_title_widget.dart';
 import 'package:provider/provider.dart';
 
-class suras_screen extends StatefulWidget {
+class SurasScreen extends StatefulWidget {
   static const String route_name = "suras_screen";
-  const suras_screen({super.key});
+  const SurasScreen({super.key});
 
   @override
-  State<suras_screen> createState() => _suras_screenState();
+  State<SurasScreen> createState() => _SurasScreenState();
 }
 
-class _suras_screenState extends State<suras_screen> {
+class _SurasScreenState extends State<SurasScreen> {
   @override
   Widget build(BuildContext context) {
     settings_provider provider = Provider.of<settings_provider>(context);
@@ -32,9 +32,9 @@ class _suras_screenState extends State<suras_screen> {
         ),
       ),
       child: Scaffold(
-        appBar: AppBar(title: Text("اسلامى")),
+        appBar: AppBar(title: const Text("اسلامى")),
         body: Card(
-          margin: EdgeInsets.all(20),
+          margin: const EdgeInsets.all(20),
           elevation: 20,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -46,15 +46,12 @@ class _suras_screenState extends State<suras_screen> {
                   Text(
                     "سورة ${args.title}",
                     style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: appTheme.isDark
-                          ? Theme.of(context).colorScheme.secondary
-                          : Colors.black,
-                    ),
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.tertiary),
                     textAlign: TextAlign.right,
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Icon(
                     Icons.play_circle,
                     size: 25,
@@ -63,19 +60,22 @@ class _suras_screenState extends State<suras_screen> {
                 ],
               ),
               Divider(
-                  thickness: 2, color: Theme.of(context).colorScheme.secondary),
+                  thickness: 3, color: Theme.of(context).colorScheme.secondary),
               Expanded(
-                child: ListView.builder(
-                  itemBuilder: (context, index) => Text(
-                    "(${index + 1}) ${lines[index].trim()} ",
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: Theme.of(context).colorScheme.onSecondary,
-                    ),
-                    textAlign: TextAlign.right,
-                  ),
-                  itemCount: lines.length,
-                ),
+                child: lines.isNotEmpty
+                    ? ListView.builder(
+                        itemBuilder: (context, index) => Text(
+                          "${lines[index]}(${index + 1})",
+                          textDirection: TextDirection.rtl,
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Theme.of(context).colorScheme.onSecondary,
+                          ),
+                          textAlign: TextAlign.right,
+                        ),
+                        itemCount: lines.length,
+                      )
+                    : const Center(child: CircularProgressIndicator.adaptive()),
               )
             ],
           ),
@@ -88,7 +88,7 @@ class _suras_screenState extends State<suras_screen> {
   void readQuranFile(int index) async {
     String readSuras =
         await rootBundle.loadString("assets/suares/${index + 1}.txt");
-    lines = readSuras.split("\n");
+    lines = readSuras.trim().split("\n");
     setState(() {});
   }
 }

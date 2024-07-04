@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/provider/settings_provider.dart';
+import 'package:islami_app/ui/provider/settings_provider.dart';
 import 'package:provider/provider.dart';
 
 class language_sheet extends StatefulWidget {
@@ -20,7 +20,7 @@ class _language_sheetState extends State<language_sheet> {
         children: [
           getSelectedLanguage(
               provider.language == "ar" ? "العربية" : "English"),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           InkWell(
             onTap: () {
               Navigator.pop(context);

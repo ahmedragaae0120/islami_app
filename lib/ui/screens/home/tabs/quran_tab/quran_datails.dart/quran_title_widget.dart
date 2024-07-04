@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/ui/quran_datails.dart/suras_screen.dart';
+import 'package:islami_app/ui/screens/home/tabs/quran_tab/quran_datails.dart/suras_screen.dart';
 
-class quran_title_widget extends StatelessWidget {
+class QuranTitleWidget extends StatelessWidget {
   final String title;
   final String versesNumber;
   final int index;
-  const quran_title_widget(
+  const QuranTitleWidget(
       {super.key,
       required this.title,
       required this.versesNumber,
@@ -15,7 +15,7 @@ class quran_title_widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed(suras_screen.route_name,
+        Navigator.of(context).pushNamed(SurasScreen.route_name,
             arguments: QuranDetailsArgs(title: title, index: index));
       },
       child: Row(

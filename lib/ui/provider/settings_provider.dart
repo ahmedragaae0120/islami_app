@@ -28,7 +28,7 @@ class settings_provider extends ChangeNotifier {
   initialize() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     language = prefs.getString("language") ?? "en";
-    themMode = prefs.getBool("them") == true?ThemeMode.dark:ThemeMode.light;
+    themMode = prefs.getBool("them") == true ? ThemeMode.dark : ThemeMode.light;
     notifyListeners();
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami_app/ui/ahadeth_datails/ahadethModel.dart';
-import 'package:islami_app/ui/ahadeth_datails/ahadeth_title.dart';
+import 'package:islami_app/ui/screens/home/tabs/ahadeth_tab/ahadeth_datails/ahadethModel.dart';
+import 'package:islami_app/ui/screens/home/tabs/ahadeth_tab/ahadeth_datails/ahadeth_title.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ahadeth_widget extends StatefulWidget {
@@ -40,13 +40,14 @@ class _ahadeth_widgetState extends State<ahadeth_widget> {
         Expanded(
           flex: 3,
           child: allHadeth.isEmpty
-              ? CircularProgressIndicator()
+              ? const CircularProgressIndicator()
               : ListView.separated(
                   itemBuilder: (context, index) =>
                       ahadeth_title(hadeth: allHadeth[index]),
                   itemCount: allHadeth.length,
-                  separatorBuilder: (context, index) => SizedBox(height: 6),
-                  physics: BouncingScrollPhysics(),
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(height: 6),
+                  physics: const BouncingScrollPhysics(),
                 ),
         )
       ],

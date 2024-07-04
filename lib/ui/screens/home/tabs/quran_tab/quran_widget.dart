@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/ui/quran_datails.dart/quran_title_widget.dart';
+import 'package:islami_app/ui/screens/home/tabs/quran_tab/quran_datails.dart/quran_title_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class quran_widget extends StatelessWidget {
@@ -275,7 +275,7 @@ class quran_widget extends StatelessWidget {
           child: ListView.builder(
             padding: EdgeInsets.all(10),
             itemBuilder: (context, index) {
-              return quran_title_widget(
+              return QuranTitleWidget(
                 title: surasName[index].trim(),
                 versesNumber: versesNumber[index].toString(),
                 index: index,
